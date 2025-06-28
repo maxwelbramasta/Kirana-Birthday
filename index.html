@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ultah ke-12 Kirana Sahira</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom, #ffe0f0, #fff5fa);
+      margin: 0; padding: 0;
+      text-align: center; color: #333;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    h1 { color: #ff4d94; font-size: 2.5em; margin-bottom: 5px; }
+    .subtitle { color: #888; font-size: 1.1em; margin-bottom: 20px; }
+    .highlight { color: #e63946; font-weight: bold; }
+    .info { font-size: 1.1em; margin: 20px 0; }
+    .btn {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 12px 24px;
+      background: #ff69b4;
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #e0569b; }
+    .rsvp-form { margin-top: 40px; text-align: left; }
+    .rsvp-form input, .rsvp-form textarea {
+      width: 100%; padding: 10px; margin-bottom: 12px;
+      border-radius: 10px; border: 1px solid #ccc; font-size: 1em;
+    }
+    .rsvp-form button {
+      padding: 10px 20px; background-color: #ff69b4;
+      border: none; color: white;
+      font-weight: bold; border-radius: 10px;
+      cursor: pointer;
+    }
+    .rsvp-form button:hover { background-color: #e0569b; }
+    footer {
+      margin-top: 50px; color: #777; font-size: 0.9em;
+    }
+    .balloon {
+      position: absolute;
+      width: 60px; height: 80px;
+      background: pink;
+      border-radius: 60% 60% 60% 60%;
+      box-shadow: inset -5px -10px rgba(255,255,255,0.3);
+      animation: float 6s ease-in-out infinite;
+    }
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 2px; height: 20px;
+      background: #aaa;
+    }
+    .balloon1 { left: 10%; top: -30px; animation-delay: 0s; }
+    .balloon2 { left: 40%; top: -50px; animation-delay: 2s; background: #ff9ff3; }
+    .balloon3 { left: 70%; top: -40px; animation-delay: 4s; background: #feca57; }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(20px); }
+    }
+    .photo {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      border: 5px solid #ff69b4;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-smile.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <div class="balloon balloon1"></div>
+    <div class="balloon balloon2"></div>
+    <div class="balloon balloon3"></div>
+
+    <!-- Ganti link ini dengan link langsung dari gambar IG yang kamu upload -->
+    <img class="photo" src="Kirana.webp" alt="Kirana Sahira">
+
+
+    <h1>Undangan Ulang Tahun 🎉</h1>
+    <p class="subtitle">Yuk rayakan momen spesial Kirana!</p>
+
+    <div class="info">
+      <p><strong>Kirana Sahira</strong></p>
+      <p>Ulang Tahun ke-<span class="highlight">12</span></p>
+      <p>Putri kedua dari Bapak Rendy Kaisara & Ibu Sefti Reza</p>
+      <p><strong>Minggu, 30 Juni 2025</strong><br>Pukul <strong>13.00 WIB</strong></p>
+      <p>Di <strong>Transmart Jambi</strong></p>
+    </div>
+
+    <a class="btn" href="https://www.google.com/maps/place/Transmart+Jambi/@-1.6096074,103.6167294,17z" target="_blank">📍 Lihat Lokasi</a>
+
+    <div class="rsvp-form">
+      <h2>Konfirmasi Kehadiran (RSVP)</h2>
+      <form id="rsvp-form">
+        <input type="text" name="Nama" placeholder="Nama Anda" required />
+        <textarea name="Pesan" rows="3" placeholder="Ucapan atau pesan untuk Kirana 💌" required></textarea>
+        <button type="submit">Kirim RSVP</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    Dengan penuh cinta,<br/>Keluarga Rendy & Sefti ❤️
+  </footer>
+
+  <script>
+    const form = document.getElementById('rsvp-form');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx58qkXdccNQ0dW_1IO2rzllHE7z1CfVUnO7DandNdD69OJ87rwLeZ3Ju9eCQ6HEwyf/exec'; // ← ganti ini dengan Web App URL dari Google Apps Script
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      .then(res => res.json())
+      .then(r => alert('Terima kasih! Kehadiran kamu telah tercatat 😊'))
+      .catch(err => alert('Maaf, terjadi kesalahan: ' + err.message));
+    });
+  </script>
+</body>
+</html>
