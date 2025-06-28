@@ -86,7 +86,7 @@
   </style>
 </head>
 <body>
-  <audio autoplay loop>
+  <audio autoplay loop muted id="bgm">
   <source src="Nanaila.mp3" type="audio/mpeg">
   Browser Anda tidak mendukung pemutar audio.
 </audio>
@@ -138,6 +138,11 @@
       .then(r => alert('Terima kasih! Kehadiran kamu telah tercatat 😊'))
       .catch(err => alert('Maaf, terjadi kesalahan: ' + err.message));
     });
+    const audio = document.getElementById('bgm');
+    window.addEventListener('click', () => {
+      audio.muted = false;
+      audio.play();
+    }, { once: true });
   </script>
 </body>
 </html>
